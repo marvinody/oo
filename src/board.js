@@ -12,6 +12,7 @@ const Board = props => {
             return (
               <div className={`game piece ${pieceName}`}>
                 <img
+                  alt={pieceName}
                   src={`/${pieceName}.svg`}
                   onClick={() => props.rotatePieceRight(piece)}
                   onContextMenu={() => props.ro}
