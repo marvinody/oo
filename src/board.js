@@ -15,7 +15,7 @@ const Board = props => {
                   alt={pieceName}
                   src={`/${pieceName}.svg`}
                   onClick={() => props.rotatePieceRight(piece)}
-                  onContextMenu={() => props.ro}
+                  onContextMenu={(e) => e.preventDefault() || props.rotatePieceLeft(piece)}
                   style={{ transform: `rotate(${piece.dir}deg)` }}
                 />
               </div>

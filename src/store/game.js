@@ -1,4 +1,4 @@
-import game_maker, { CW } from "./game_maker";
+import game_maker, { CCWdeg, CWdeg } from "./game_maker";
 const LOAD_GAME = 'LOAD_GAME'
 const ROTATE_PIECE = 'ROTATE_PIECE'
 
@@ -37,7 +37,7 @@ export default (state = initialState, action) => {
           if (piece.row !== action.piece.row || piece.col !== action.piece.col) {
             return piece
           }
-          return { ...piece, dir: action.isCW ? CW(piece.dir) : CW(piece.dir) }
+          return { ...piece, dir: action.isCW ? CWdeg(piece.dir) : CCWdeg(piece.dir) }
         }))
       }
     default:
