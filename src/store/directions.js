@@ -3,6 +3,13 @@ export const EAST = 'EAST'
 export const SOUTH = 'SOUTH'
 export const WEST = 'WEST'
 
+export const CWdeg = dir => {
+  return (dir + 90)
+}
+export const CCWdeg = dir => {
+  return (dir - 90)
+}
+
 export const CCW = dir => {
   switch (dir) {
     case NORTH:

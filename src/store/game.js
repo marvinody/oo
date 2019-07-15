@@ -1,4 +1,5 @@
-import game_maker, { CCWdeg, CWdeg } from "./game_maker";
+import { CCWdeg, CWdeg } from './directions';
+import game_maker, { isGameSolved } from "./game_maker";
 const LOAD_GAME = 'LOAD_GAME'
 const ROTATE_PIECE = 'ROTATE_PIECE'
 
@@ -6,7 +7,8 @@ const initialState = {
   board: game_maker(`
   L|L
   T|T
-  O O`)
+  O O`),
+  solved: false,
 }
 
 
@@ -32,13 +34,15 @@ export default (state = initialState, action) => {
     case LOAD_GAME:
       return { ...state, ...action.game }
     case ROTATE_PIECE:
+      const board = state.board.map(row => row.map(piece => {
+        if (piece.row !== action.piece.row || piece.col !== action.piece.col) {
+          return piece
+        }
+        return { ...piece, dir: action.isCW ? CWdeg(piece.dir) : CCWdeg(piece.dir) }
+      }))
       return {
-        ...state, board: state.board.map(row => row.map(piece => {
-          if (piece.row !== action.piece.row || piece.col !== action.piece.col) {
-            return piece
-          }
-          return { ...piece, dir: action.isCW ? CWdeg(piece.dir) : CCWdeg(piece.dir) }
-        }))
+        ...state, board,
+        solved: isGameSolved(board),
       }
     default:
       return state

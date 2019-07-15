@@ -5,6 +5,7 @@ import { rotatePiece } from './store/game';
 const Board = props => {
   return (
     <div className='game board'>
+      {props.solved ? "SOLVED!" : ''}
       {props.board.map(row => {
         return (<div className='game row'>
           {row.map(piece => {
@@ -30,6 +31,7 @@ const Board = props => {
 
 const mapStateToProps = state => ({
   board: state.game.board,
+  solved: state.game.solved,
 })
 
 const mapDispatchToPros = dispatch => ({
