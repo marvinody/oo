@@ -34,6 +34,9 @@ export default (state = initialState, action) => {
     case LOAD_GAME:
       return { ...state, ...action.game }
     case ROTATE_PIECE:
+      if (state.solved) {
+        return state;
+      }
       const board = state.board.map(row => row.map(piece => {
         if (piece.row !== action.piece.row || piece.col !== action.piece.col) {
           return piece
