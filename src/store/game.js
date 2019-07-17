@@ -1,5 +1,5 @@
 import { CCWdeg, CWdeg } from './directions';
-import game_maker, { isGameSolved } from "./game_maker";
+import game_maker, { isGameSolved } from "./game_ai";
 const LOAD_GAME = 'LOAD_GAME'
 const ROTATE_PIECE = 'ROTATE_PIECE'
 const ROTATE_PIECE_TO_ANGLE = 'ROTATE_PIECE_TO_ANGLE'
