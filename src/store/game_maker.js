@@ -53,6 +53,7 @@ const getNeighbors = (board, col, row) => {
     .filter(p => board[p[0]]) // check if col exists
     .filter(p => board[p[0]][p[1]]) // check if col,row exists
     .map(p => board[p[0]][p[1]])
+    .filter(p => p.token !== EMPTY)
 }
 // returns direction of how to get to p2 from p1
 const getDirFromPoints = (p1, p2) => {
@@ -122,7 +123,7 @@ export default (str) => {
     .filter(s => s.length)
     .map((line, row) => line.split('').map((char, col) => {
       const token = charToToken(char)
-      const dir = 0;
+      const dir = Math.floor(Math.random() * 4) * 90
       return {
         token, row, col, dir
       }

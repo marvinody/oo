@@ -2,11 +2,14 @@ import { CCWdeg, CWdeg } from './directions';
 import game_maker, { isGameSolved } from "./game_maker";
 const LOAD_GAME = 'LOAD_GAME'
 const ROTATE_PIECE = 'ROTATE_PIECE'
+const ROTATE_PIECE_TO_ANGLE = 'ROTATE_PIECE_TO_ANGLE'
 
 const initialState = {
   board: game_maker(`
-  L|L
-  T|T
+  LTL
+  T+T
+  TTT
+  | |
   O O`),
   solved: false,
 }
@@ -19,6 +22,16 @@ export const getGame = () => dispatch => {
     game,
   })
 }
+
+export const solveGame = () => dispatch => {
+  dispatch()
+}
+
+export const rotatePieceTo = (piece, rotation) => ({
+  type: ROTATE_PIECE_TO_ANGLE,
+  piece,
+  rotation,
+})
 
 export const rotatePiece = (piece, isCW) => ({
   type: ROTATE_PIECE,
